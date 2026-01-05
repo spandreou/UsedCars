@@ -54,14 +54,14 @@ document.addEventListener("DOMContentLoaded", () => {
     dark: {
       particles: {
         number: { value: 80, density: { enable: true, value_area: 900 } },
-        color: { value: "#ffffff" },
+        color: { value: "#ffffff9a" },
         shape: { type: "circle" },
         opacity: { value: 0.4 },
         size: { value: 2, random: true },
         line_linked: {
           enable: true,
           distance: 180,
-          color: "#ffffff",
+          color: "#ffffff96",
           opacity: 0.85,
           width: 2
         },
