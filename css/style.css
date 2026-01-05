@@ -1,0 +1,250 @@
+/* =====================
+   BASE
+===================== */
+html,
+body {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  transition: background 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+}
+
+/* =====================
+   THEME VARIABLES
+===================== */
+body[data-theme="light"] {
+  --app-bg: #e1e4e8;              /* 👈 πιο ήπιο, όχι άσπρο */
+  --text-main: #2b2f33;           /* 👈 πιο ξεκούραστο */
+  --card-bg: rgba(248, 249, 250, 0.88);
+  --border-color: rgba(0,0,0,0.06);
+
+  --input-bg: rgba(255, 255, 255, 0.75);
+  --input-text: #2b2f33;
+  --input-placeholder: #6c757d;
+}
+
+
+body[data-theme="dark"] {
+  --app-bg: #0b0b0b;
+  --text-main: #eaeaea;
+  --card-bg: rgba(20, 20, 20, 0.85);
+  --border-color: rgba(255,255,255,0.12);
+  --input-bg: #111;
+  --input-text: #ffffff;
+  --input-placeholder: #888;
+}
+
+/* =====================
+   BODY
+===================== */
+body {
+  background: var(--app-bg);
+  color: var(--text-main);
+}
+
+/* =====================
+   PARTICLES (FULL SCREEN)
+===================== */
+#particles-js {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: auto;
+}
+
+#particles-js canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+body[data-theme="dark"] #particles-js {
+  opacity: 0.85;
+}
+
+/* =====================
+   APP CONTENT (ABOVE PARTICLES)
+===================== */
+#app-content {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  background: transparent;
+}
+
+/* =====================
+   NAVBAR
+===================== */
+.navbar {
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.navbar-brand {
+  letter-spacing: 0.5px;
+}
+
+.nav-link {
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+  color: #0d6efd;
+}
+
+body[data-theme="dark"] .navbar,
+body[data-theme="dark"] .navbar * {
+  color: var(--text-main) !important;
+}
+
+/* =====================
+   CARDS / ALERTS (GLOBAL)
+===================== */
+.card,
+.alert {
+  background: var(--card-bg) !important;
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  backdrop-filter: blur(10px);
+}
+
+body[data-theme="dark"] .card {
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+}
+
+/* =====================
+   FORMS
+===================== */
+.form-label {
+  color: var(--text-main);
+}
+
+.form-control,
+.form-select {
+  background-color: var(--input-bg);
+  color: var(--input-text);
+  border: 1px solid var(--border-color);
+}
+
+.form-control::placeholder {
+  color: var(--input-placeholder);
+}
+
+.form-control:focus,
+.form-select:focus {
+  background-color: var(--input-bg);
+  color: var(--input-text);
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.2rem rgba(13,110,253,.25);
+}
+
+/* =====================
+   REGISTER PAGE (SPECIAL CARD)
+===================== */
+body[data-theme="dark"] .register-card {
+  background: rgba(20, 20, 20, 0.92) !important;
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,0.12);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.75);
+}
+
+body[data-theme="dark"] .register-card label,
+body[data-theme="dark"] .register-card h1,
+body[data-theme="dark"] .register-card h2 {
+  color: #f1f1f1;
+}
+
+body[data-theme="dark"] .register-card .form-control {
+  background-color: #0f0f0f !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255,255,255,0.15);
+}
+
+/* =====================
+   TEXT INSIDE CARDS
+===================== */
+.card .text-muted,
+.card small {
+  opacity: 0.85;
+}
+
+/* =====================
+   FOOTER
+===================== */
+.glass-footer {
+  background: transparent;
+  color: #9aa0a6;
+  border-top: 1px solid var(--border-color);
+  padding: 1rem 0;
+}
+
+body[data-theme="dark"] footer {
+  color: #9aa0a6 !important;
+}
+/* Το app-content ΔΕΝ πιάνει mouse */
+#app-content {
+  pointer-events: none;
+}
+
+/* ΑΛΛΑ όλα τα πραγματικά elements ΝΑΙ */
+#app-content a,
+#app-content button,
+#app-content input,
+#app-content select,
+#app-content textarea,
+#app-content label,
+#app-content .card,
+#app-content .navbar,
+#app-content .alert,
+#app-content .container,
+#app-content .row,
+#app-content .col,
+#app-content nav,
+#app-content footer {
+  pointer-events: auto;
+}
+.card {
+  background: rgba(20, 20, 20, 0.55) !important; /* 👈 glass */
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,0.12);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+}
+body[data-theme="light"] #particles-js {
+  opacity: 0.35;   /* 👈 τεράστια διαφορά */
+}
+
+/* Light mode πιο φωτεινό */
+body[data-theme="light"] .card {
+  background: rgba(248, 249, 250, 0.9) !important;
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+}
+
+.card {
+  max-width: 800px;   /* 👈 εδώ παίζεις */
+  width: 100%;
+  margin: 0 auto;
+}
+#particles-js {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+}
+
+#particles-js canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+
+
