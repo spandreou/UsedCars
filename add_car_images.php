@@ -43,10 +43,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['images'])) {
             $size = $_FILES['images']['size'][$i];
             $mime = mime_content_type($tmpName);
 
-            if ($mime !== 'image/jpeg') {
-                $errors[] = "Κάποια εικόνα δεν είναι JPG.";
-                continue;
-            }
+            $originalName = $_FILES['images']['name'][$i];
+$extension = strtolower(pathinfo($originalName, PATHINFO_EXTENSION));
+
+if (!in_array($extension, ['jpg', 'jpeg'])) {
+    $errors[] = "Κάποια εικόνα δεν είναι JPG.";
+    continue;
+}
+
 
             if ($size > $MAX_SIZE) {
                 $errors[] = "Κάποια εικόνα ξεπερνά τα 250KB.";
